@@ -1,0 +1,45 @@
+Q1. Explain GET and POST methods.
+The GET and POST methods are two commonly used HTTP request methods for sending data between a client (such as a web browser) and a server.
+
+GET method: The GET method is used to request data from a specified resource. When a client makes a GET request, it is asking the server to retrieve a particular resource, such as a web page or a file. The parameters and data associated with a GET request are appended to the URL as query parameters.
+Real time example : Google Search
+
+POST method: The POST method is used to submit data to be processed to a specified resource. When a client makes a POST request, it sends data to the server in the body of the request. This method is commonly used when submitting forms on web pages or when uploading files. The data sent in a POST request is not visible in the URL, unlike with the GET method
+Real time Example : Gmail Signin Form
+
+We declare the type of request method in the decorator function as:
+@app.route('/',methods=['POST']) --> For POST method
+
+Q2. Why is request used in Flask?
+In Flask, the request object is used to access incoming request data when building web applications. It provides a way to access and manipulate the data sent by the client in the HTTP request.
+
+Here are some reasons why the request object is used in Flask:
+
+Retrieving form data: The request object allows you to access form data submitted by the client. When a form is submitted via a POST request, you can use request.form to access the form data as a dictionary-like object. It provides methods to retrieve specific form fields by name.
+Handling query parameters: With the request object, you can easily access the query parameters sent in the URL of a GET request. The request.args attribute provides a dictionary-like object containing all the query parameters. You can retrieve specific parameters by their names.
+Processing file uploads: When dealing with file uploads in a web application, the request object allows you to access the uploaded files sent by the client. The uploaded files are available through the request.files attribute, which provides methods to interact with the uploaded files, such as saving them to disk or retrieving their properties.
+Accessing request headers: The request.headers attribute provides access to the HTTP headers sent by the client. You can retrieve specific headers by their names, which can be useful for authentication, content negotiation, or other custom header-based logic.
+Working with cookies: The request.cookies attribute allows you to access the cookies sent by the client. You can retrieve specific cookies by their names or access all the cookies as a dictionary-like object.
+Q3. Why is redirect() used in Flask?
+In Flask, the redirect() function is used to redirect the user's browser to a different URL. It is commonly used when handling web application routes to redirect users to different pages or routes within the application. Here are some reasons why the redirect() function is used in Flask:
+
+Route redirection: When a user accesses a particular route in a Flask application, you may want to redirect them to a different route based on certain conditions. For example, after a successful login, you can redirect the user to their profile page or a dashboard. The redirect() function allows you to specify the target URL and trigger a redirect, sending the user to the desired page.
+Post-Redirect-Get (PRG) pattern: The PRG pattern is a common design pattern used in web applications to avoid duplicate form submissions. After processing a form submission, instead of rendering a response directly, you can use the redirect() function to redirect the user to another route. This prevents the user from resubmitting the form if they refresh the page. The redirected route can then render a response, typically a GET request, to display the result or a success message.
+Handling authentication and authorization: In applications that require user authentication, the redirect() function is often used to redirect unauthenticated users to a login page or redirect unauthorized users to an access-denied page. It allows you to control the flow of the application and ensure that users are directed to the appropriate pages based on their authentication and authorization status.
+External redirects: The redirect() function can also be used to redirect users to external URLs, such as external websites or APIs. This can be useful when building applications that integrate with external services or need to redirect users to external resources.
+Q4. What are templates in Flask? Why is the render_template() function used?
+In Flask, templates are used to generate dynamic HTML pages or other types of responses that are sent back to the client. Templates allow you to separate the presentation logic from the application logic, making it easier to maintain and modify the user interface of your web application.
+
+Templates in Flask are typically written in HTML and may include placeholders or template tags that are replaced with actual values or data when the template is rendered. These placeholders allow you to insert dynamic content, such as variables, conditionals, loops, and other logic, into the final HTML output.
+
+The render_template() function is used to render a template and generate the final HTML response to be sent back to the client. It takes the name of the template file as an argument and can also accept additional parameters to pass data to the template.
+
+Here are some reasons why the render_template() function is used in Flask:
+
+Rendering dynamic content: With the render_template() function, you can pass data from your Python code to the template, allowing you to dynamically generate HTML content. This can include variables, lists, dictionaries, or any other data structure that you want to display in the template. The template engine will replace the placeholders in the template with the actual data, resulting in a dynamic HTML response.
+
+Separation of concerns: By using templates, you can separate the presentation logic (HTML) from the application logic (Python code). This separation makes it easier to maintain and modify the user interface without having to mix HTML and Python code together. Templates provide a clean and organized way to structure your views and keep your codebase more manageable.
+
+Code reuse: Templates support code reuse by allowing you to define reusable components or layout structures. You can define base templates that contain common elements such as headers, footers, or navigation menus, and extend them in other templates. This helps avoid duplication and promotes modular and reusable code.
+
+Template inheritance: Flask templates support template inheritance, which means you can define a base template that serves as a layout structure and define child templates that extend and override specific sections of the base template. This allows you to define a consistent layout and structure across multiple pages while customizing specific sections as needed.
